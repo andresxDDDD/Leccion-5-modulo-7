@@ -1,0 +1,17 @@
+<h1>Lista de Libros (Total: {{ libros|length }})</h1>
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Páginas</th>
+        <th>Disponible</th>
+    </tr>
+    {% for libro in libros %}
+    <tr>
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.autor }}</td>
+        <td>{{ libro.paginas }}</td>
+        <td>{{ libro.disponible|yesno:"Sí,No" }}</td>
+    </tr>
+    {% endfor %}
+</table>
