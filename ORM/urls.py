@@ -7,4 +7,5 @@ from . import views
 urlpatterns = [
    
     path("lista/",views.lista_libros, name="lista_libros"),
+    path("consulta/",views.libro_gabriel, name="libro_gabriel"),
 ]

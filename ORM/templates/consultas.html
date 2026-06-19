@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas de Libros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .contador {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .vacio {
+            color: #7f8c8d;
+            font-style: italic;
+            background: #eef2f3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #dcdde1;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Panel de Consultas ORM</h1>
+
+    <h2>Libros de Gabriel García Márquez <span class="contador">(Total: {{ libro|length }})</span></h2>
+    <ul>
+        {% for l in libro %}
+            <li>
+                <strong>Título:</strong> {{ l.titulo }} <br>
+                <strong>Páginas:</strong> {{ l.paginas }} <br>
+                <strong>Disponible:</strong> {% if l.disponible %} Sí {% else %} No {% endif %}
+            </li>
+        {% empty %}
+            <li class="vacio">No se encontraron libros de Gabriel García Márquez en la base de datos.</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h2>Libros con más de 200 páginas <span class="contador">(Total: {{ pagina|length }})</span></h2>
+    <ul>
+        {% for p in pagina %}
+            <li>
+                <strong>Título:</strong> {{ p.titulo }} <br>
+                <strong>Autor:</strong> {{ p.autor }} <br>
+                <strong>Páginas:</strong> {{ p.paginas }} páginas
+            </li>
+        {% empty %}
+            <li class="vacio">No hay ningún libro que supere las 200 páginas.</li>
+        {% endfor %}
+    </ul>
+
+     <h2>Libros Disponibles <span class="contador">(Total: {{ pagina|length }})</span></h2>
+    <ul>
+        {% for p in pagina %}
+            <li>
+                <strong>Título:</strong> {{ p.titulo }} <br>
+                <strong>Autor:</strong> {{ p.autor }} <br>
+                <strong>Páginas:</strong> {{ p.paginas }} páginas
+            </li>
+        {% empty %}
+            <li class="vacio">No hay ningún libro que supere las 200 páginas.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
